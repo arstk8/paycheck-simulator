@@ -1,20 +1,19 @@
-import logo from './logo.svg'
-import './App.css'
+import Form from './components/Form'
 
 function App() {
+    function submitHandler(event) {
+        event.preventDefault()
+        console.log('submitted')
+    }
+
     return (
-        <div className="App">
+        <div className="container">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-                    Learn React
-                </a>
+                <h1>Paycheck Simulator</h1>
+                <Form onSubmit={submitHandler} />
             </header>
         </div>
     )
 }
 
-export default App;
+export default App
