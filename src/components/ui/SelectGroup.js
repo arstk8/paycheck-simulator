@@ -1,7 +1,11 @@
 import { labelToId } from './utils'
 
 function SelectGroup(props) {
-    const options = props.options.map(option => <option>{option}</option>)
+    const options = props.options.map(option => <option key={option}>{option}</option>)
+
+    function optionSelectedHandler(event) {
+        props.onOptionChanged(event.target.value)
+    }
 
     const groupId = labelToId(props.name)
     return (
@@ -9,7 +13,7 @@ function SelectGroup(props) {
             <label htmlFor={groupId} className="form-label">
                 Pay Frequency
             </label>
-            <select className="form-select" id={groupId}>
+            <select className="form-select" id={groupId} onChange={optionSelectedHandler} value={props.value}>
                 {options}
             </select>
         </div>

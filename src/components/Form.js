@@ -1,35 +1,30 @@
 import RadioGroup from './ui/RadioGroup'
 import SelectGroup from './ui/SelectGroup'
+import { useState } from 'react'
+import CurrencyField from './ui/CurrencyField'
 
 function Form(props) {
+    const [filingStatus, setFilingStatus] = useState('Married filing jointly')
+    const [payFrequency, setPayFrequency] = useState('Biweekly')
+    const [regularPay, setRegularPay] = useState('0.00')
+    const [federalTax, setFederalTax] = useState('0.00')
+
     return (
         <form onSubmit={props.onSubmit}>
             <RadioGroup
                 name="Filing Status"
                 options={['Married filing jointly', 'Single or married filing separately']}
+                onOptionChanged={setFilingStatus}
+                value={filingStatus}
             />
-            <SelectGroup name="Pay Frequency" options={['Weekly', 'Biweekly', 'Semimonthly', 'Monthly']} />
-            <div className="mb-3">
-                <label className="form-label" htmlFor="regular-pay">
-                    Regular Pay
-                </label>
-                <input id="regular-pay" className="form-control" type="number" min="0.01" step="0.01" value="2500.00" />
-            </div>
-
-            <div className="mb-3">
-                <label className="form-label" htmlFor="federal-tax">
-                    Federal Tax
-                </label>
-                <input
-                    id="federal-tax"
-                    className="form-control"
-                    type="number"
-                    min="0.01"
-                    step="0.01"
-                    value="264.24"
-                    disabled
-                />
-            </div>
+            <SelectGroup
+                name="Pay Frequency"
+                options={['Weekly', 'Biweekly', 'Semimonthly', 'Monthly']}
+                onOptionChanged={setPayFrequency}
+                value={payFrequency}
+            />
+            <CurrencyField name="Regular Pay" value={regularPay} onValueChanged={setRegularPay} />
+            <CurrencyField name="Federal Tax" value={federalTax} disabled="true" onValueChanged={setFederalTax} />
 
             <button type="submit" className="btn btn-primary">
                 Submit
