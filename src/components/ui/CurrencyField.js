@@ -1,4 +1,4 @@
-import { labelToId } from './utils'
+import { labelToId } from './Utils'
 
 function CurrencyField(props) {
     const fieldId = labelToId(props.name)

@@ -2,10 +2,12 @@ import RadioGroup from './ui/RadioGroup'
 import SelectGroup from './ui/SelectGroup'
 import { useState } from 'react'
 import CurrencyField from './ui/CurrencyField'
+import FilingStatus from '../constants/FilingStatus'
+import PayFrequency from '../constants/PayFrequency'
 
 function Form(props) {
-    const [filingStatus, setFilingStatus] = useState('Married filing jointly')
-    const [payFrequency, setPayFrequency] = useState('Biweekly')
+    const [filingStatus, setFilingStatus] = useState(FilingStatus.MARRIED_FILING_JOINTLY.description)
+    const [payFrequency, setPayFrequency] = useState(PayFrequency.BIWEEKLY.description)
     const [regularPay, setRegularPay] = useState('0.00')
     const [federalTax, setFederalTax] = useState('0.00')
 
@@ -13,13 +15,13 @@ function Form(props) {
         <form onSubmit={props.onSubmit}>
             <RadioGroup
                 name="Filing Status"
-                options={['Married filing jointly', 'Single or married filing separately']}
+                options={FilingStatus.values()}
                 onOptionChanged={setFilingStatus}
                 value={filingStatus}
             />
             <SelectGroup
                 name="Pay Frequency"
-                options={['Weekly', 'Biweekly', 'Semimonthly', 'Monthly']}
+                options={PayFrequency.values()}
                 onOptionChanged={setPayFrequency}
                 value={payFrequency}
             />

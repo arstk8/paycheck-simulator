@@ -1,4 +1,4 @@
-import { labelToId } from './utils'
+import { labelToId } from './Utils'
 
 function SelectGroup(props) {
     const options = props.options.map(option => <option key={option}>{option}</option>)

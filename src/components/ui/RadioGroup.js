@@ -1,4 +1,4 @@
-import { labelToId } from './utils'
+import { labelToId } from './Utils'
 
 function RadioGroup(props) {
     const groupId = labelToId(props.name)
