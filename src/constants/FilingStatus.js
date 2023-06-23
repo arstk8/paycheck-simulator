@@ -7,6 +7,6 @@ export default class FilingStatus {
     }
 
     static values() {
-        return [this.MARRIED_FILING_JOINTLY.description, this.SINGLE_OR_MARRIED_FILING_SEPARATELY.description]
+        return [this.MARRIED_FILING_JOINTLY, this.SINGLE_OR_MARRIED_FILING_SEPARATELY]
     }
 }

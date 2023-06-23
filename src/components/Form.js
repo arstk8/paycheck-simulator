@@ -4,24 +4,36 @@ import { useState } from 'react'
 import CurrencyField from './ui/CurrencyField'
 import FilingStatus from '../constants/FilingStatus'
 import PayFrequency from '../constants/PayFrequency'
+import calculateFederalTax from '../services/federal/FederalTaxService'
 
-function Form(props) {
+function Form() {
+    function submitHandler(event) {
+        event.preventDefault()
+
+        const federalTax = calculateFederalTax({
+            filingStatus,
+            payFrequency,
+            regularPay
+        })
+        setFederalTax(federalTax)
+    }
+
     const [filingStatus, setFilingStatus] = useState(FilingStatus.MARRIED_FILING_JOINTLY.description)
     const [payFrequency, setPayFrequency] = useState(PayFrequency.BIWEEKLY.description)
     const [regularPay, setRegularPay] = useState('0.00')
     const [federalTax, setFederalTax] = useState('0.00')
 
     return (
-        <form onSubmit={props.onSubmit}>
+        <form onSubmit={submitHandler}>
             <RadioGroup
                 name="Filing Status"
-                options={FilingStatus.values()}
+                options={FilingStatus.values().map(f => f.description)}
                 onOptionChanged={setFilingStatus}
                 value={filingStatus}
             />
             <SelectGroup
                 name="Pay Frequency"
-                options={PayFrequency.values()}
+                options={PayFrequency.values().map(p => p.description)}
                 onOptionChanged={setPayFrequency}
                 value={payFrequency}
             />

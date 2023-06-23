@@ -1,3 +1,3 @@
 export function labelToId(label) {
-    return label.replace(' ', '-').toLowerCase()
+    return label.split(' ').join('-').toLowerCase()
 }
