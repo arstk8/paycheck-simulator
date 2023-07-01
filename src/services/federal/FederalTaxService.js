@@ -1,8 +1,8 @@
-import FederalTaxTable from './FederalTaxTable'
 import PayFrequency from '../../constants/PayFrequency'
+import federalTaxTable from './federalTaxTable.json'
 
 export default function calculateFederalTax({ filingStatus, payFrequency, regularPay }) {
-    const taxTable = FederalTaxTable.getTaxTable({ year: 2023, filingStatus })
+    const taxTable = federalTaxTable['2023'][filingStatus]
 
     const payFrequencyEnum = PayFrequency.valueOf(payFrequency)
     const adjustedStandardDeduction = taxTable.standardDeduction / payFrequencyEnum.paysPerYear
