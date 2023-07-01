@@ -2,6 +2,7 @@
   "2023": {
     "Married filing jointly": {
       "standardDeduction": 27700,
+      "roundToNearestDollar": false,
       "brackets": [
         {
           "rate": 0.1,
@@ -42,6 +43,7 @@
     },
     "Single or married filing separately": {
       "standardDeduction": 13850,
+      "roundToNearestDollar": false,
       "brackets": [
         {
           "rate": 0.1,

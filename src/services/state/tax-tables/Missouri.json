@@ -1,0 +1,96 @@
+{
+  "2023": {
+    "Married filing jointly": {
+      "standardDeduction": 27700,
+      "roundToNearestDollar": true,
+      "brackets": [
+        {
+          "rate": 0,
+          "lowerBound": 0,
+          "upperBound": 1207
+        },
+        {
+          "rate": 0.02,
+          "lowerBound": 1207,
+          "upperBound": 2414
+        },
+        {
+          "rate": 0.025,
+          "lowerBound": 2414,
+          "upperBound": 3621
+        },
+        {
+          "rate": 0.03,
+          "lowerBound": 3621,
+          "upperBound": 4828
+        },
+        {
+          "rate": 0.035,
+          "lowerBound": 4828,
+          "upperBound": 6035
+        },
+        {
+          "rate": 0.04,
+          "lowerBound": 6035,
+          "upperBound": 7242
+        },
+        {
+          "rate": 0.045,
+          "lowerBound": 7242,
+          "upperBound": 8449
+        },
+        {
+          "rate": 0.0495,
+          "lowerBound": 8449,
+          "upperBound": 1.7976931348623157e+308
+        }
+      ]
+    },
+    "Single or married filing separately": {
+      "standardDeduction": 13850,
+      "roundToNearestDollar": true,
+      "brackets": [
+        {
+          "rate": 0,
+          "lowerBound": 0,
+          "upperBound": 1207
+        },
+        {
+          "rate": 0.02,
+          "lowerBound": 1207,
+          "upperBound": 2414
+        },
+        {
+          "rate": 0.025,
+          "lowerBound": 2414,
+          "upperBound": 3621
+        },
+        {
+          "rate": 0.03,
+          "lowerBound": 3621,
+          "upperBound": 4828
+        },
+        {
+          "rate": 0.035,
+          "lowerBound": 4828,
+          "upperBound": 6035
+        },
+        {
+          "rate": 0.04,
+          "lowerBound": 6035,
+          "upperBound": 7242
+        },
+        {
+          "rate": 0.045,
+          "lowerBound": 7242,
+          "upperBound": 8449
+        },
+        {
+          "rate": 0.0495,
+          "lowerBound": 8449,
+          "upperBound": 1.7976931348623157e+308
+        }
+      ]
+    }
+  }
+}

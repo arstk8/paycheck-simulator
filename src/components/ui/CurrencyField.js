@@ -1,11 +1,22 @@
 import { labelToId } from './Utils'
+import { useState } from 'react'
 
 function CurrencyField(props) {
-    const fieldId = labelToId(props.name)
+    function formatValue(value) {
+        return (+value).toFixed(2)
+    }
 
     function valueChangedHandler(event) {
-        props.onValueChanged(event.target.value)
+        setFormattedValue(event.target.value)
+        props.onValueChanged(+event.target.value)
     }
+
+    function blurHandler(event) {
+        setFormattedValue(formatValue(event.target.value))
+    }
+
+    const [formattedValue, setFormattedValue] = useState(formatValue(props.value))
+    const fieldId = labelToId(props.name)
 
     return (
         <div className="mb-3">
@@ -18,9 +29,9 @@ function CurrencyField(props) {
                 type="number"
                 min="0.01"
                 step="0.01"
-                value={props.value}
-                disabled={props.disabled === 'true'}
+                value={formattedValue}
                 onChange={valueChangedHandler}
+                onBlur={blurHandler}
             />
         </div>
     )
