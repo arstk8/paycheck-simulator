@@ -8,6 +8,7 @@ import calculateFederalTax from '../services/federal/FederalTaxService'
 import calculateStateTax from '../services/state/StateTaxService'
 import State from '../constants/State'
 import ReadOnlyField from './ui/ReadOnlyField'
+import { calculateFicaTax, calculateMedicareTax } from '../services/payroll/PayrollTaxService'
 
 function Form() {
     function submitHandler(event) {
@@ -27,6 +28,12 @@ function Form() {
             regularPay
         })
         setFederalTax(federalTax)
+
+        const ficaTax = calculateFicaTax({ regularPay })
+        setFicaTax(ficaTax)
+
+        const medicareTax = calculateMedicareTax({ regularPay })
+        setMedicareTax(medicareTax)
     }
 
     const [filingStatus, setFilingStatus] = useState(FilingStatus.MARRIED_FILING_JOINTLY.description)
@@ -35,6 +42,8 @@ function Form() {
     const [regularPay, setRegularPay] = useState('0.00')
     const [federalTax, setFederalTax] = useState('0.00')
     const [stateTax, setStateTax] = useState('0.00')
+    const [ficaTax, setFicaTax] = useState('0.00')
+    const [medicareTax, setMedicareTax] = useState('0.00')
 
     return (
         <form onSubmit={submitHandler}>
@@ -59,6 +68,8 @@ function Form() {
             <CurrencyField name="Regular Pay" value={regularPay} onValueChanged={setRegularPay} />
             <ReadOnlyField name="State Tax" value={stateTax} />
             <ReadOnlyField name="Federal Tax" value={federalTax} />
+            <ReadOnlyField name="Fica Tax" value={ficaTax} />
+            <ReadOnlyField name="Medicare Tax" value={medicareTax} />
 
             <button type="submit" className="btn btn-primary">
                 Submit
