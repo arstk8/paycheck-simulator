@@ -11,7 +11,7 @@ function SelectGroup(props) {
     return (
         <div className="mb-3">
             <label htmlFor={groupId} className="form-label">
-                Pay Frequency
+                {props.name}
             </label>
             <select className="form-select" id={groupId} onChange={optionSelectedHandler} value={props.value}>
                 {options}
